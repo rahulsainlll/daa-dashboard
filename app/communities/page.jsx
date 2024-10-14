@@ -1,4 +1,4 @@
-"use client"; // Important for Next.js to use client-side rendering
+"use client";
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -94,7 +94,7 @@ const ClubsPage = () => {
       name: "Action",
       cell: row => (
         <Link href={`https://cuintra-frontend-bj29.vercel.app/../${row.ProposedEntityName}/membershipForm`}>
-          <Button className="border-2 border-blue-500 text-black rounded-xl px-2 py-2">
+          <Button className="px-2 py-2 text-black border-2 border-blue-500 rounded-xl">
             Join now
           </Button>
         </Link>
@@ -114,95 +114,100 @@ const ClubsPage = () => {
   });
 
   return (
-    <div className='mb-4'>
-      <Sidebar open={open} setOpen={setOpen} />
-      <Nav />
-      <div
-        className={`transition-all duration-300 ${open ? "md:ml-[16.5rem] w-[40%] md:w-[80.2%]" : "mx-2 lg:mx-0 lg:ml-24 mr-8"
-          } md:w-[92.100%] w-[95.5%]`}
-      >
-        <UnivInfo />
-        <div className='lg:flex space-y-4 lg:space-y-0 gap-4 mt-4'>
-          <div className="lg:w-1/6 space-y-4">
-            <div className="h-[47%] bg-gradient-to-r from-greenCustom to-tealDark text-white p-4 lg:p-4 rounded-3xl shadow-lg">
-              <h2 className="text-3xl font-bold mb-0 lg:mb-4">Communities</h2>
-              <p className="text-sm hidden lg:block">Discover a world of opportunities to explore your passions and make a lasting impact on campus.</p>
-            </div>
-          </div>
-          <div className="lg:w-5/6 p-4 pt-6 border-2 rounded-3xl shadow-lg">
-            <div className="lg:flex justify-between gap-4 mb-6">
-              <div className='flex w-full lg:w-2/3 bg-[#F0F1F6] py-3 px-4 border shadow-inner rounded-full'>
-                <input
-                  placeholder="Search by Name"
-                  className="outline-none px-4 w-full bg-[#F0F1F6]"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
+    <div className="flex h-screen overflow-hidden">
+      <Sidebar className="z-10 flex-shrink-0" open={open} setOpen={setOpen} />
+      
+      <div className="flex-1 overflow-auto">
+        <div className={`transition-all duration-300 ${open ? "ml-64" : "ml-20"}`}>
+          <Nav />
+          <div className="px-4 py-6 md:px-6 lg:px-8">
+            <UnivInfo />
+            <div className="mt-6 space-y-6 lg:flex lg:space-y-0 lg:space-x-6">
+              <div className="lg:w-1/6">
+                <div className="h-auto p-4 text-white shadow-lg bg-gradient-to-r from-greenCustom to-tealDark rounded-3xl">
+                  <h2 className="mb-4 text-3xl font-bold">Communities</h2>
+                  <p className="text-sm">Discover a world of opportunities to explore your passions and make a lasting impact on campus.</p>
+                </div>
               </div>
-              <div className='flex gap-4 mt-4 lg:mt-0'>
-                <Dropdown>
-                  <DropdownTrigger className='bg-white'>
-                    <Button className='px-10' variant="bordered">
-                      Department <ChevronDown />
-                    </Button>
-                  </DropdownTrigger>
-                  <DropdownMenu aria-label="Department selection">
-                    {departments.map((department) => (
-                      <DropdownItem 
-                        key={department._id} 
-                        onPress={() => handleDepartmentSelect(department.name)}
-                      >
-                        {department.name}
-                      </DropdownItem>
-                    ))}
-                  </DropdownMenu>
-                </Dropdown>
-                <Dropdown>
-                  <DropdownTrigger className='bg-white'>
-                    <Button className='lg:px-10 px-6' variant="bordered">
-                      Cluster <ChevronDown />
-                    </Button>
-                  </DropdownTrigger>
-                  <DropdownMenu aria-label="Cluster selection">
-                    {clusters.map((cluster) => (
-                      <DropdownItem 
-                        key={cluster._id} 
-                        onPress={() => handleClusterSelect(cluster.name)}
-                      >
-                        {cluster.name}
-                      </DropdownItem>
-                    ))}
-                  </DropdownMenu>
-                </Dropdown>
+              <div className="flex-1 p-4 pt-6 border-2 shadow-lg rounded-3xl">
+                <div className="flex flex-col gap-4 mb-6 lg:flex-row lg:items-center">
+                  <div className='flex-grow bg-[#F0F1F6] py-3 px-4 border shadow-inner rounded-full'>
+                    <input
+                      placeholder="Search by Name"
+                      className="w-full px-4 bg-transparent outline-none"
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                  </div>
+                  <div className='flex flex-wrap gap-4'>
+                    <Dropdown>
+                      <DropdownTrigger className='bg-white'>
+                        <Button className='px-4 md:px-10' variant="bordered">
+                          Department <ChevronDown />
+                        </Button>
+                      </DropdownTrigger>
+                      <DropdownMenu aria-label="Department selection">
+                        {departments.map((department) => (
+                          <DropdownItem 
+                            key={department._id} 
+                            onPress={() => handleDepartmentSelect(department.name)}
+                          >
+                            {department.name}
+                          </DropdownItem>
+                        ))}
+                      </DropdownMenu>
+                    </Dropdown>
+                    <Dropdown>
+                      <DropdownTrigger className='bg-white'>
+                        <Button className='px-4 md:px-10' variant="bordered">
+                          Cluster <ChevronDown />
+                        </Button>
+                      </DropdownTrigger>
+                      <DropdownMenu aria-label="Cluster selection">
+                        {clusters.map((cluster) => (
+                          <DropdownItem 
+                            key={cluster._id} 
+                            onPress={() => handleClusterSelect(cluster.name)}
+                          >
+                            {cluster.name}
+                          </DropdownItem>
+                        ))}
+                      </DropdownMenu>
+                    </Dropdown>
+                  </div>
+                </div>
+                <div className="overflow-x-auto">
+                  <DataTable
+                    columns={columns}
+                    data={filteredClubs}
+                    fixedHeader
+                    pagination
+                    responsive
+                    customStyles={{
+                      headCells: {
+                        style: {
+                          fontSize: '16px',
+                          fontWeight: 'bold',
+                          color: 'white',
+                          background: '#5375D5',
+                        },
+                      },
+                      cells: {
+                        style: {
+                          fontSize: '14px',
+                          color: '#4A4A4A',
+                        },
+                      },
+                    }}
+                  />
+                </div>
               </div>
             </div>
-            <DataTable
-              columns={columns}
-              data={filteredClubs}
-              fixedHeader
-              pagination
-              customStyles={{
-                headCells: {
-                  style: {
-                    fontSize: '20px',
-                    fontWeight: 'bold',
-                    color: 'white',
-                    background: '#5375D5',
-                  },
-                },
-                cells: {
-                  style: {
-                    fontSize: '14px',
-                    color: '#4A4A4A',
-                  },
-                },
-              }}
-            />
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default ClubsPage;

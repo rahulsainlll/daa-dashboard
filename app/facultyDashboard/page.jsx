@@ -25,22 +25,26 @@ const page = () => {
     return (
         <div className='text-black' >
             <FacultySidebar className='' open={open} setOpen={setOpen} />
+            <div
+      className={`transition-all duration-300 ${open ? "md:ml-[16.5rem]  w-[40%] md:w-[80.2%]" : "mx-2 lg:mx-0 md:w-[93%] lg:ml-24 mr-8"} md:w-[83.100%] w-[95.5%]`}
+     >
             <FacultyNav />
             <div
                 className={`transition-all duration-300 ${open ? "md:ml-[16.5rem]  w-[40%] md:w-[80%]" : "mx-2 lg:mx-0 lg:ml-24 mr-8"
                     } md:w-[92.100%]  w-[95.5%]   `}
             >
                 <FacultyUnivInfo />
-                <div className="mt-4 lg:flex gap-4">
+                <div className="gap-4 mt-4 lg:flex">
                     <MonthlyEvents className='' entity={entity}/>
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <div className=" h-full px-8 py-4 border-2 border-gray-200 rounded-3xl">
+                        <div className="h-full px-8 py-4 border-2 border-gray-200 rounded-3xl">
                             <DateCalendar value={value} onChange={(newValue) => setValue(newValue)} />
                         </div>
                     </LocalizationProvider>
                 </div>
                 <OngoingEvents />
                 
+            </div>
             </div>
         </div>
     )

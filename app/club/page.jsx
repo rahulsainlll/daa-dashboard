@@ -20,7 +20,7 @@ const ClubsPage = () => {
   const [clusters, setClusters] = useState([]);
 
   useEffect(() => {
-    setOpen(false);
+    setOpen(false);     
   }, []);
 
   // Fetch clubs
@@ -97,7 +97,7 @@ const ClubsPage = () => {
       name: "Action",
       cell: row => (
         <Link href={`https://cuintra-frontend-bj29.vercel.app/../${row.ProposedEntityName}/membershipForm`}>
-          <Button className="border-2 border-blue-500 text-black rounded-xl px-2 py-2">
+          <Button className="px-2 py-2 text-black border-2 border-blue-500 rounded-xl">
             Join now
           </Button>
         </Link>
@@ -117,25 +117,28 @@ const ClubsPage = () => {
   return (
     <div className='mb-4'>
       <Sidebar open={open} setOpen={setOpen} />
+     <div
+      className={`flex-1 transition-all duration-300 ease-in-out ${open ? 'ml-60' : 'ml-20'}`}
+     >
       <Nav />
       <div
         className={`transition-all duration-300 ${open ? "md:ml-[16.5rem] w-[40%] md:w-[80.2%]" : "mx-2 lg:mx-0 lg:ml-24 mr-8"
           } md:w-[92.100%] w-[95.5%]`}
       >
         <UnivInfo />
-        <div className='lg:flex space-y-4 lg:space-y-0 gap-4 mt-4'>
-          <div className="lg:w-1/6 space-y-4">
+        <div className='gap-4 mt-4 space-y-4 lg:flex lg:space-y-0'>
+          <div className="space-y-4 lg:w-1/6">
             <div className="bg-gradient-to-br h-[47%] from-red-400 to-red-600 text-white p-4 lg:p-4 rounded-3xl shadow-lg">
-              <h2 className="text-3xl font-bold mb-0 lg:mb-4">Clubs</h2>
-              <p className="text-sm hidden lg:block">Discover a world of opportunities to explore your passions and make a lasting impact on campus.</p>
+              <h2 className="mb-0 text-3xl font-bold lg:mb-4">Clubs</h2>
+              <p className="hidden text-sm lg:block">Discover a world of opportunities to explore your passions and make a lasting impact on campus.</p>
             </div>
             <div className="bg-gradient-to-br h-[50%] from-red-400 via-purple-500 to-blue-600 text-white p-4 lg:p-4 rounded-3xl shadow-lg">
-              <h2 className="text-3xl font-bold mb-0 lg:mb-4">Connecting All Circle</h2>
-              <p className="text-sm hidden lg:block">Discover a world of opportunities to explore your passions and make a lasting impact on campus.</p>
+              <h2 className="mb-0 text-3xl font-bold lg:mb-4">Connecting All Circle</h2>
+              <p className="hidden text-sm lg:block">Discover a world of opportunities to explore your passions and make a lasting impact on campus.</p>
             </div>
           </div>
-          <div className="lg:w-5/6 p-4 pt-6 border-2 rounded-3xl shadow-lg">
-            <div className="lg:flex justify-between gap-4 mb-6">
+          <div className="p-4 pt-6 border-2 shadow-lg lg:w-5/6 rounded-3xl">
+            <div className="justify-between gap-4 mb-6 lg:flex">
               <input
                 placeholder="   Search"
                 className="w-full lg:w-2/3 border-2 p-2 lg:p-1 rounded-[2rem]"
@@ -163,7 +166,7 @@ const ClubsPage = () => {
                 </Dropdown>
                 <Dropdown>
                   <DropdownTrigger className='bg-white'>
-                    <Button className='lg:px-10 px-6' variant="bordered">
+                    <Button className='px-6 lg:px-10' variant="bordered">
                       {selectedClusters.length > 0 ? `${selectedClusters.length} selected` : 'All Clusters'}
                       <ChevronDown />
                     </Button>
@@ -206,6 +209,7 @@ const ClubsPage = () => {
           </div>
         </div>
       </div>
+     </div>
     </div>
   );
 };

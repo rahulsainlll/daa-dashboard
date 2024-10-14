@@ -91,22 +91,26 @@ const Page = () => {
     return (
         <div>
             <FacultySidebar className='' open={open} setOpen={setOpen} />
+            
+            <div
+      className={`transition-all duration-300 ${open ? "md:ml-[16.5rem]  w-[40%] md:w-[80.2%]" : "mx-2 lg:mx-0 md:w-[93%] lg:ml-24 mr-8"} md:w-[83.100%] w-[95.5%]`}
+     >
             <FacultyNav/>
             <div className={`transition-all duration-300 ${open ? "md:ml-[16.5rem]  w-[40%] md:w-[80%]" : "mx-2 lg:mx-0 lg:ml-24 mr-8"} md:w-[92.100%]  w-[95.5%]`}>
                 <FacultyUnivInfo />
-                <h1 className='bg-customOrange p-2 w-full my-4 text-xl text-white font-bold text-center rounded-2xl'>Members</h1>
-                <div className="p-4 pt-6 border-2 rounded-3xl shadow-lg">
-                    <div className="lg:flex justify-between space-y-2 lg:space-y-0 gap-4 mb-6">
+                <h1 className='w-full p-2 my-4 text-xl font-bold text-center text-white bg-customOrange rounded-2xl'>Members</h1>
+                <div className="p-4 pt-6 border-2 shadow-lg rounded-3xl">
+                    <div className="justify-between gap-4 mb-6 space-y-2 lg:flex lg:space-y-0">
                         <input
                             type="text"
                             placeholder="Search members..."
-                            className="border-2 border-gray-300 rounded-xl px-4 py-1 w-full lg:w-auto"
+                            className="w-full px-4 py-1 border-2 border-gray-300 rounded-xl lg:w-auto"
                             value={searchTerm}
                             onChange={e => setSearchTerm(e.target.value)}
                         />
                         <Dropdown>
-                            <DropdownTrigger className='bg-white text-black'>
-                                <Button className='px-10 w-full' variant="bordered">{selectedDepartment} <ChevronDown /></Button>
+                            <DropdownTrigger className='text-black bg-white'>
+                                <Button className='w-full px-10' variant="bordered">{selectedDepartment} <ChevronDown /></Button>
                             </DropdownTrigger>
                             <DropdownMenu aria-label="Department selection">
                                 <DropdownItem onClick={() => setSelectedDepartment('All Departments')}>All Departments</DropdownItem>
@@ -115,7 +119,7 @@ const Page = () => {
                                 <DropdownItem onClick={() => setSelectedDepartment('ME')}>ME</DropdownItem>
                             </DropdownMenu>
                         </Dropdown>
-                        <button className='bg-customOrange w-full lg:w-min py-2 px-4 font-bold text-white rounded-2xl'>Submit</button>
+                        <button className='w-full px-4 py-2 font-bold text-white bg-customOrange lg:w-min rounded-2xl'>Submit</button>
                     </div>
 
                     <DataTable
@@ -141,6 +145,7 @@ const Page = () => {
                         }}
                     />
                 </div>
+            </div>
             </div>
         </div>
     );

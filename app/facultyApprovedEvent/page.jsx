@@ -98,15 +98,19 @@ const Page = () => {
     return (
         <div className='text-black'>
             <FacultySidebar className='' open={open} setOpen={setOpen} />
+            
+            <div
+      className={`transition-all duration-300 ${open ? "md:ml-[16.5rem]  w-[40%] md:w-[80.2%]" : "mx-2 lg:mx-0 md:w-[93%] lg:ml-24 mr-8"} md:w-[83.100%] w-[95.5%]`}
+     >
             <FacultyNav />
             <div className={`transition-all duration-300 ${open ? "md:ml-[16.5rem] w-[40%] md:w-[80%]" : "mx-2 lg:mx-0 lg:ml-24 mr-8"} md:w-[92.100%] w-[95.5%]`}>
                 <FacultyUnivInfo />
-                <h1 className='bg-customOrange p-2 w-full my-4 text-xl text-white font-bold text-center rounded-2xl'>Approved Events</h1>
-                <div className="p-4 pt-6 border-2 rounded-3xl shadow-lg">
-                    <div className="lg:flex justify-between space-y-4 lg:space-y-0 gap-4 mb-6">
+                <h1 className='w-full p-2 my-4 text-xl font-bold text-center text-white bg-customOrange rounded-2xl'>Approved Events</h1>
+                <div className="p-4 pt-6 border-2 shadow-lg rounded-3xl">
+                    <div className="justify-between gap-4 mb-6 space-y-4 lg:flex lg:space-y-0">
                         <Dropdown>
-                            <DropdownTrigger className='bg-white text-black'>
-                                <Button className='px-10 w-full' variant="bordered">{selectedEventType} <ChevronDown /></Button>
+                            <DropdownTrigger className='text-black bg-white'>
+                                <Button className='w-full px-10' variant="bordered">{selectedEventType} <ChevronDown /></Button>
                             </DropdownTrigger>
                             <DropdownMenu aria-label="Event Type selection">
                                 <DropdownItem onClick={() => setSelectedEventType('All Event Types')}>All Event Types</DropdownItem>
@@ -117,8 +121,8 @@ const Page = () => {
                             </DropdownMenu>
                         </Dropdown>
                         <Dropdown>
-                            <DropdownTrigger className='bg-white text-black'>
-                                <Button className='lg:px-10 w-full px-6' variant="bordered">{selectedCategory}<ChevronDown /></Button>
+                            <DropdownTrigger className='text-black bg-white'>
+                                <Button className='w-full px-6 lg:px-10' variant="bordered">{selectedCategory}<ChevronDown /></Button>
                             </DropdownTrigger>
                             <DropdownMenu aria-label="Category selection">
                                 <DropdownItem onClick={() => setSelectedCategory('All Categories')}>All Categories</DropdownItem>
@@ -155,6 +159,7 @@ const Page = () => {
                         }}
                     />
                 </div>
+            </div>
             </div>
         </div>
     );

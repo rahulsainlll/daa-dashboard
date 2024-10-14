@@ -27,7 +27,9 @@ const Main = () => {
 
     return (
         <div>
-            <Sidebar className='' open={open} setOpen={setOpen} />
+          
+           <Sidebar className="z-10" open={open} setOpen={setOpen} />
+           
             
             
             <div
@@ -35,7 +37,7 @@ const Main = () => {
             >
                 <Nav />
                 <UnivInfo />
-                <div className="lg:flex justify-between gap-4 space-y-4 lg:space-y-0 w-full h-96 px- mt-4 mb-72 lg:mb-0">
+                <div className="justify-between w-full gap-4 mt-4 space-y-4 lg:flex lg:space-y-0 h-96 px- mb-72 lg:mb-0">
                     <div className="lg:w-full h-64 lg:h-full rounded-[2rem] overflow-hidden">
                         <Carousel slide={true} slideInterval={1000} className=''>
                             {featuredEvents.map(event => (
@@ -45,7 +47,7 @@ const Main = () => {
                     </div>
                     <EventCarousel />
                 </div>
-                <div className="lg:flex justify-between h- gap-4 space-y-4 lg:space-y-0 my-4">
+                <div className="justify-between gap-4 my-4 space-y-4 lg:flex h- lg:space-y-0">
                     <Memories />
                     <img src="./005.jpg" alt="" className=' lg:w-1/3 rounded-[2rem]' />
                 </div>

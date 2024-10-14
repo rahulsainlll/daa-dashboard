@@ -1,4 +1,9 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
+  "/club/page": "app/club/page.js",
   "/page": "app/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js"
+  "/communities/page": "app/communities/page.js",
+  "/departSociety/page": "app/departSociety/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/profSociety/page": "app/profSociety/page.js"
 }

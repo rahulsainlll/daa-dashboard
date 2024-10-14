@@ -1,4 +1,4 @@
-// File: C:\Users\satya\OneDrive\Desktop\yameteee\Money\daa-dashboard\app\layout.js
+// File: /Users/rahulsain/Desktop/daa-dashboard/app/layout.js
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
